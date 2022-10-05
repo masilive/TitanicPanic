@@ -1,8 +1,7 @@
+import Charts from "./componects/Charts";
 
 function App() {
-  return (
-    <></>
-  );
+  return (<Charts />);
 }
 
 export default App;
