@@ -1,5 +1,5 @@
 import { Container, Row, Col, Tabs, Tab } from "solid-bootstrap";
-import Candlestick from "./Candlestick";
+import Candlesticks from "./Candlesticks";
 
 const Charts = () => {
     return (<>
@@ -16,7 +16,7 @@ const Charts = () => {
                 {/*Body*/}
                 <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" class="mb-3">
                     <Tab eventKey="home" title="Home">
-                        <Candlestick />
+                        <Candlesticks />
                     </Tab>
                     <Tab eventKey="stats" title="Stats">
                         Coming soon!
