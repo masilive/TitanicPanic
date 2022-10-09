@@ -1,11 +1,17 @@
-import { candleVMargin, candleHMargin, candleHSpacing, candleBodyWidth, candleWickWidth, candleHPadding } from "../store/global";
+import { candleVMargin, candleHMargin, candleHSpacing, candleBodyWidth, candleWickWidth, candleHPadding, chartHeight } from "../store/global";
+import { createMemo } from 'solid-js';
 
 const Candlestick = (props) => {
+    const spread = props.maxPrice - props.minPrice;
 
-    const upperWick = props.priceInfo.high + candleVMargin;
-    const upperBody = Math.max(props.priceInfo.open, props.priceInfo.close) + candleVMargin;
-    const lowerBody = Math.min(props.priceInfo.open, props.priceInfo.close) + candleVMargin;
-    const lowerWick = props.priceInfo.low + candleVMargin;
+    const toRelativeValue = (value, isPriceInfo = true) => {
+        return ((props.maxPrice - value) / spread) * (isPriceInfo? chartHeight() - (candleVMargin + candleVMargin) : chartHeight());
+    };
+
+    const upperWick = toRelativeValue(props.priceInfo.h) + candleVMargin;
+    const upperBody = toRelativeValue(Math.max(props.priceInfo.o, props.priceInfo.c)) + candleVMargin;
+    const lowerBody = toRelativeValue(Math.min(props.priceInfo.o, props.priceInfo.c)) + candleVMargin;
+    const lowerWick = toRelativeValue(props.priceInfo.l) + candleVMargin;
 
     const candleX = candleHMargin + candleHPadding + (candleHSpacing * props.index);
 
@@ -22,13 +28,16 @@ const Candlestick = (props) => {
     points = points.concat(candleX + candleBodyWidth + candleWickWidth, ',', upperBody, ' ');      // 11
     points = points.concat(candleX + candleBodyWidth + candleWickWidth, ',', upperWick);           // 12
 
-    const colour = props.priceInfo.close > props.priceInfo.open ? 'lime' : 'red';
+    const colour = props.priceInfo.c > props.priceInfo.o ? 'lime' : 'red';
 
     return (<polygon points={points} style={"fill:" + colour + ";stroke:" + colour + ";stroke-width:0;shape-rendering:geometricPrecision;"} />);
 };
 
 const Candlesticks = (props) => {
-    return (<>{props.priceInfoArray && props.priceInfoArray.map((priceInfo, index) => <Candlestick key={index} index={index} priceInfo={priceInfo} />)}</>);
+    const maxPrice = Math.max(...props.priceInfoArray.map(item => item.h));
+    const minPrice = Math.min(...props.priceInfoArray.map(item => item.l));
+
+    return (<>{props.priceInfoArray && props.priceInfoArray.map((priceInfo, index) => <Candlestick key={index} index={index} priceInfo={priceInfo} minPrice={minPrice} maxPrice={maxPrice} />)}</>);
 };
 
 export default Candlesticks;

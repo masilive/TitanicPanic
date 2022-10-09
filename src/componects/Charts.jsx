@@ -1,8 +1,11 @@
 import { Container, Row, Col, Tabs, Tab } from "solid-bootstrap";
 import Candlesticks from "./Candlesticks";
 import { chartWidth, chartHeight } from "../store/global";
+import {priceInfoArray } from "../store/rates";
 
 const Charts = () => {
+    const priceInfoArrayWindow = priceInfoArray.slice(0, 10);
+
     return (<>
         <Container fluid>
             <Row>
@@ -20,8 +23,8 @@ const Charts = () => {
                         <Container fluid='0'>
                             <Row>
                                 <Col>
-                                    <svg className="bg-secondary" width={chartWidth()} height={chartHeight()}>
-                                        <Candlesticks priceInfoArray={priceInfoArray} />
+                                    <svg className="bg-secondary" width={chartWidth()} height={chartHeight() + 'px'}>
+                                        <Candlesticks priceInfoArray={priceInfoArrayWindow} />
                                     </svg>
                                 </Col>
                                 <Col xs lg='3'>
