@@ -7,18 +7,20 @@ const Candlestick = (props) => {
     const lowerBody = Math.min(props.priceInfo.open, props.priceInfo.close) + candleVMargin;
     const lowerWick = props.priceInfo.low + candleVMargin;
 
-    let points = "".concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', upperWick, ' ');    // 1
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', upperBody, ' ');    // 2
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index), ',', upperBody, ' ');      // 3
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index), ',', lowerBody, ' ');      // 4
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', lowerBody, ' ');      // 5
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', lowerWick, ' ');      // 6
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', lowerWick, ' ');      // 7
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', lowerBody, ' ');      // 8
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + (candleBodyWidth * 2) + candleWickWidth, ',', lowerBody, ' ');      // 9
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + (candleBodyWidth * 2) + candleWickWidth, ',', upperBody, ' ');      // 10
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', upperBody, ' ');      // 11
-    points = points.concat(candleHMargin + candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', upperWick);           // 12
+    const candleX = candleHMargin + candleHPadding + (candleHSpacing * props.index);
+
+    let points = "".concat(candleX + candleBodyWidth, ',', upperWick, ' ');    // 1
+    points = points.concat(candleX + candleBodyWidth, ',', upperBody, ' ');    // 2
+    points = points.concat(candleX, ',', upperBody, ' ');      // 3
+    points = points.concat(candleX, ',', lowerBody, ' ');      // 4
+    points = points.concat(candleX + candleBodyWidth, ',', lowerBody, ' ');      // 5
+    points = points.concat(candleX + candleBodyWidth, ',', lowerWick, ' ');      // 6
+    points = points.concat(candleX + candleBodyWidth + candleWickWidth, ',', lowerWick, ' ');      // 7
+    points = points.concat(candleX + candleBodyWidth + candleWickWidth, ',', lowerBody, ' ');      // 8
+    points = points.concat(candleX + candleBodyWidth + candleBodyWidth + candleWickWidth, ',', lowerBody, ' ');      // 9
+    points = points.concat(candleX + candleBodyWidth + candleBodyWidth + candleWickWidth, ',', upperBody, ' ');      // 10
+    points = points.concat(candleX + candleBodyWidth + candleWickWidth, ',', upperBody, ' ');      // 11
+    points = points.concat(candleX + candleBodyWidth + candleWickWidth, ',', upperWick);           // 12
 
     const colour = props.priceInfo.close > props.priceInfo.open ? 'lime' : 'red';
 
