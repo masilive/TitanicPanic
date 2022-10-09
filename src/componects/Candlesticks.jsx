@@ -23,7 +23,7 @@ const Candlestick = (props) => {
 
     const colour = props.priceInfo.close > props.priceInfo.open ? 'lime' : 'red';
 
-    return (<polygon points={points} style={"fill:" + colour + ";stroke:" + colour + "lime;stroke-width:0"} />);
+    return (<polygon points={points} style={"fill:" + colour + ";stroke:" + colour + ";stroke-width:0;shape-rendering:geometricPrecision;"} />);
 };
 
 const Candlesticks = () => {
