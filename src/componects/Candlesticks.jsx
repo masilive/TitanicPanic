@@ -10,8 +10,13 @@ const Candlestick = (props) => {
 
     const upperWick = toRelativeValue(props.priceInfo.h) + candleVMargin;
     const upperBody = toRelativeValue(Math.max(props.priceInfo.o, props.priceInfo.c)) + candleVMargin;
-    const lowerBody = toRelativeValue(Math.min(props.priceInfo.o, props.priceInfo.c)) + candleVMargin;
+    let lowerBody = toRelativeValue(Math.min(props.priceInfo.o, props.priceInfo.c)) + candleVMargin;
     const lowerWick = toRelativeValue(props.priceInfo.l) + candleVMargin;
+
+    if(upperBody === lowerBody)
+    {
+        lowerBody--;
+    }
 
     const candleX = candleHMargin + candleHPadding + (candleHSpacing * props.index);
 

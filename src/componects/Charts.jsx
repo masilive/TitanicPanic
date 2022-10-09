@@ -4,7 +4,7 @@ import { chartWidth, chartHeight } from "../store/global";
 import {priceInfoArray } from "../store/rates";
 
 const Charts = () => {
-    const priceInfoArrayWindow = priceInfoArray.slice(0, 10);
+    const priceInfoArrayWindow = priceInfoArray.slice(0, 160).reverse();
 
     return (<>
         <Container fluid>
@@ -23,12 +23,9 @@ const Charts = () => {
                         <Container fluid='0'>
                             <Row>
                                 <Col>
-                                    <svg className="bg-secondary" width={chartWidth()} height={chartHeight() + 'px'}>
+                                    <svg id='chart' className="bg-secondary" width={chartWidth()} height={chartHeight() + 'px'}>
                                         <Candlesticks priceInfoArray={priceInfoArrayWindow} />
                                     </svg>
-                                </Col>
-                                <Col xs lg='3'>
-
                                 </Col>
                             </Row>
                         </Container>
