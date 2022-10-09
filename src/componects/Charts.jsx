@@ -16,7 +16,16 @@ const Charts = () => {
                 {/*Body*/}
                 <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" class="mb-3">
                     <Tab eventKey="home" title="Home">
-                        <Candlesticks />
+                        <Container fluid='0'>
+                            <Row>
+                                <Col>
+                                    <Candlesticks />
+                                </Col>
+                                <Col xs lg='3'>
+
+                                </Col>
+                            </Row>
+                        </Container>
                     </Tab>
                     <Tab eventKey="stats" title="Stats">
                         Coming soon!

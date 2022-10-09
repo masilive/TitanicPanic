@@ -1,5 +1,5 @@
 import { Container, Row, Col, Tabs, Tab } from "solid-bootstrap";
-import { chartWidth, chartHeight, candleVSpacing, candleHSpacing, candleBodyWidth, candleWickWidth } from "../store/global";
+import { chartWidth, chartHeight, candleVSpacing, candleHSpacing, candleBodyWidth, candleWickWidth, candleHPadding } from "../store/global";
 
 const Candlestick = (props) => {
 
@@ -8,18 +8,18 @@ const Candlestick = (props) => {
     const lowerBody = Math.min(props.priceInfo.open, props.priceInfo.close);
     const lowerWick = props.priceInfo.low;
 
-    let points = "".concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + upperWick, ' ');    // 1
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + upperBody, ' ');    // 2
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index), ',', candleVSpacing + upperBody, ' ');      // 3
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index), ',', candleVSpacing + lowerBody, ' ');      // 4
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + lowerBody, ' ');      // 5
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + lowerWick, ' ');      // 6
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + lowerWick, ' ');      // 7
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + lowerBody, ' ');      // 8
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + (candleBodyWidth * 2) + candleWickWidth, ',', candleVSpacing + lowerBody, ' ');      // 9
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + (candleBodyWidth * 2) + candleWickWidth, ',', candleVSpacing + upperBody, ' ');      // 10
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + upperBody, ' ');      // 11
-    points = points.concat(candleHSpacing + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + upperWick);           // 12
+    let points = "".concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + upperWick, ' ');    // 1
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + upperBody, ' ');    // 2
+    points = points.concat(candleHPadding + (candleHSpacing * props.index), ',', candleVSpacing + upperBody, ' ');      // 3
+    points = points.concat(candleHPadding + (candleHSpacing * props.index), ',', candleVSpacing + lowerBody, ' ');      // 4
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + lowerBody, ' ');      // 5
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth, ',', candleVSpacing + lowerWick, ' ');      // 6
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + lowerWick, ' ');      // 7
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + lowerBody, ' ');      // 8
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + (candleBodyWidth * 2) + candleWickWidth, ',', candleVSpacing + lowerBody, ' ');      // 9
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + (candleBodyWidth * 2) + candleWickWidth, ',', candleVSpacing + upperBody, ' ');      // 10
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + upperBody, ' ');      // 11
+    points = points.concat(candleHPadding + (candleHSpacing * props.index) + candleBodyWidth + candleWickWidth, ',', candleVSpacing + upperWick);           // 12
 
     const colour = props.priceInfo.close > props.priceInfo.open ? 'lime' : 'red';
 
