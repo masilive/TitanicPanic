@@ -1,4 +1,4 @@
-import { chartWidth, chartHeight, candleVMargin, candleHMargin, candleHSpacing, candleBodyWidth, candleWickWidth, candleHPadding } from "../store/global";
+import { candleVMargin, candleHMargin, candleHSpacing, candleBodyWidth, candleWickWidth, candleHPadding } from "../store/global";
 
 const Candlestick = (props) => {
 

@@ -1,5 +1,6 @@
 import { Container, Row, Col, Tabs, Tab } from "solid-bootstrap";
 import Candlesticks from "./Candlesticks";
+import { chartWidth, chartHeight } from "../store/global";
 
 const Charts = () => {
     return (<>
