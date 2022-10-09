@@ -27,15 +27,8 @@ const Candlestick = (props) => {
     return (<polygon points={points} style={"fill:" + colour + ";stroke:" + colour + ";stroke-width:0;shape-rendering:geometricPrecision;"} />);
 };
 
-const Candlesticks = () => {
-    const pricesInfo = [{ open: 10, high: 0, low: 80, close: 30 }, { open: 80, high: 30, low: 145, close: 140 }, { open: 80, high: 0, low: 90, close: 10 },
-    { open: 10, high: 0, low: 80, close: 30 }, { open: 80, high: 30, low: 145, close: 140 }, { open: 80, high: 0, low: 90, close: 10 }];
-
-    return (<>
-        <svg className="bg-secondary" width={chartWidth()} height={chartHeight()}>
-            {pricesInfo && pricesInfo.map((priceInfo, index) => <Candlestick key={index} index={index} priceInfo={priceInfo} />)}
-        </svg>
-    </>);
+const Candlesticks = (props) => {
+    return (<>{props.priceInfoArray && props.priceInfoArray.map((priceInfo, index) => <Candlestick key={index} index={index} priceInfo={priceInfo} />)}</>);
 };
 
 export default Candlesticks;

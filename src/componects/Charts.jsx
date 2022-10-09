@@ -19,7 +19,9 @@ const Charts = () => {
                         <Container fluid='0'>
                             <Row>
                                 <Col>
-                                    <Candlesticks />
+                                    <svg className="bg-secondary" width={chartWidth()} height={chartHeight()}>
+                                        <Candlesticks priceInfoArray={priceInfoArray} />
+                                    </svg>
                                 </Col>
                                 <Col xs lg='3'>
 
